@@ -142,6 +142,7 @@
                 }
             },
             handleChange() {
+                debugger;
                 this.emitChange();
                 this.getLocalSug();
                 this.inputCallback && this.inputCallback();
@@ -246,11 +247,11 @@
                 }
             },
             getLocalSug() {
-                if(this.matchInput) {
+                if(this.matchInput && this.dataText) {
                     let word = this.matchCase ? this.dataText : this.dataText.toLowerCase();
                     this.list = this.localList.filter((item) => {
                         let itemText = this.matchCase ? item.text : item.text.toLowerCase();
-                        return word ? itemText.indexOf(word) > -1 : true;
+                        return itemText.indexOf(word) > -1;
                     });
                 }
                 else {
@@ -276,6 +277,7 @@
                 this.dataText = '';
             },
             emitChange() {
+                debugger;
                 this.$emit('input', {
                     text: this.dataText,
                     value: this.dataValue
