@@ -5,7 +5,7 @@
             :disabled="disabled"
             :placeholder="placeholder"
             v-model="dataText"
-            @change="handleChange"
+            @input="handleInput"
             @focus="handleFocus"
             @blur="handleBlur"
             @keydown.up.native.prevent="changeCurrent(-1)"
@@ -141,8 +141,7 @@
                     };
                 }
             },
-            handleChange() {
-                debugger;
+            handleInput() {
                 this.emitChange();
                 this.getLocalSug();
                 this.inputCallback && this.inputCallback();
@@ -277,7 +276,6 @@
                 this.dataText = '';
             },
             emitChange() {
-                debugger;
                 this.$emit('input', {
                     text: this.dataText,
                     value: this.dataValue
